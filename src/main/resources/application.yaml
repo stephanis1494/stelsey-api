@@ -5,6 +5,9 @@ spring:
     url: jdbc:postgresql://localhost:5433/stelsey
     username: ${DB_USER:stelsey}
     password: ${DB_PASSWORD:stelsey}
+  mvc:
+    problemdetails:
+      enabled: true
   jpa:
     open-in-view: false
     hibernate:
