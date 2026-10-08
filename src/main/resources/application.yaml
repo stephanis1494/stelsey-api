@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: stelsey-api
+  datasource:
+    url: jdbc:postgresql://localhost:5433/stelsey
+    username: ${DB_USER:stelsey}
+    password: ${DB_PASSWORD:stelsey}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
