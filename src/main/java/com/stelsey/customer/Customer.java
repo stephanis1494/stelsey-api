@@ -57,4 +57,12 @@ public class Customer {
     public Instant getUpdatedAt() {
         return updatedAt;
     }
+
+    public void rename(String name) {
+        this.name = name;
+    }
+
+    public void changeStatus(CustomerStatus status) {
+        this.status = status;
+    }
 }
