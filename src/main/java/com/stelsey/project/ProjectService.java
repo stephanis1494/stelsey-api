@@ -61,6 +61,13 @@ public class ProjectService {
         return ProjectResponse.from(project);
     }
 
+    @Transactional(readOnly = true)
+    public List<ProjectSummaryResponse> listAll(ProjectStatus status) {
+        List<Project> projects = status == null ? projectRepository.findAllWithCustomer() :
+                projectRepository.findAllWithCustomerByStatus(status);
+        return projects.stream().map(ProjectSummaryResponse::from).toList();
+    }
+
     private Project findProject(Long id) {
         return projectRepository.findById(id).orElseThrow(() -> new NotFoundException("Project", id));
     }

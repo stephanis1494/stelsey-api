@@ -49,4 +49,9 @@ public class ProjectAdminController {
    ) {
         return projectService.update(id, request);
    }
+
+   @GetMapping("/projects")
+    public List<ProjectSummaryResponse> listAll(@RequestParam(required = false) ProjectStatus status) {
+        return projectService.listAll(status);
+   }
 }
