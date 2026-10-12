@@ -1,6 +1,8 @@
 spring:
   application:
     name: stelsey-api
+  config:
+    import: optional:file:.env[.properties]
   datasource:
     url: jdbc:postgresql://localhost:5433/stelsey
     username: ${DB_USER:stelsey}
@@ -15,3 +17,8 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+app:
+  admin:
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+    display-name: ${ADMIN_NAME:Admin}
