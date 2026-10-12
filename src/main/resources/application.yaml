@@ -22,3 +22,11 @@ app:
     email: ${ADMIN_EMAIL:}
     password: ${ADMIN_PASSWORD:}
     display-name: ${ADMIN_NAME:Admin}
+server:
+  servlet:
+    session:
+      timeout: 8h
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: ${COOKIE_SECURE:false}

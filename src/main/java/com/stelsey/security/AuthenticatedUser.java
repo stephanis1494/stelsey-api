@@ -18,15 +18,17 @@ public class AuthenticatedUser implements UserDetails, CredentialsContainer {
     private final String email;
     private final Role role;
     private final boolean enabled;
+    private final String displayName;
     private String passwordHash;
 
-    private AuthenticatedUser(Long id, Long customerId, String email, Role role, boolean enabled, String passwordHash) {
+    private AuthenticatedUser(Long id, Long customerId, String email, Role role, boolean enabled, String passwordHash, String displayName) {
         this.id = id;
         this.customerId = customerId;
         this.email = email;
         this.role = role;
         this.enabled = enabled;
         this.passwordHash = passwordHash;
+        this.displayName = displayName;
     }
 
     public static AuthenticatedUser from(UserAccount user) {
@@ -37,7 +39,8 @@ public class AuthenticatedUser implements UserDetails, CredentialsContainer {
                 user.getEmail(),
                 user.getRole(),
                 user.isEnabled(),
-                user.getPasswordHash()
+                user.getPasswordHash(),
+                user.getDisplayName()
         );
     }
 
@@ -71,6 +74,10 @@ public class AuthenticatedUser implements UserDetails, CredentialsContainer {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public String displayName() {
+        return displayName;
     }
 
     @Override
