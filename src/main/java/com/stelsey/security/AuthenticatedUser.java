@@ -38,7 +38,7 @@ public class AuthenticatedUser implements UserDetails, CredentialsContainer {
                 customerId,
                 user.getEmail(),
                 user.getRole(),
-                user.isEnabled(),
+                user.isEnabled() && user.hasPassword(),
                 user.getPasswordHash(),
                 user.getDisplayName()
         );

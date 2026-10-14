@@ -1,5 +1,7 @@
 package com.stelsey.security;
 
+import com.stelsey.user.AcceptInviteRequest;
+import com.stelsey.user.InviteAcceptanceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +34,11 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final SecurityContextRepository securityContextRepository = new HttpSessionSecurityContextRepository();
     private final SecurityContextHolderStrategy securityContextHolderStrategy = SecurityContextHolder.getContextHolderStrategy();
+    private final InviteAcceptanceService inviteAcceptanceService;
 
-    public AuthController(AuthenticationManager authenticationManager) {
+    public AuthController(AuthenticationManager authenticationManager, InviteAcceptanceService inviteAcceptanceService) {
         this.authenticationManager = authenticationManager;
+        this.inviteAcceptanceService = inviteAcceptanceService;
     }
 
     @GetMapping("/csrf")
@@ -68,6 +72,12 @@ public class AuthController {
     @GetMapping("/me")
     public MeResponse me(@AuthenticationPrincipal AuthenticatedUser user) {
         return MeResponse.from(user);
+    }
+
+    @PostMapping("accept-invite")
+    public ResponseEntity<Void> acceptInvite(@Valid @RequestBody AcceptInviteRequest request) {
+        inviteAcceptanceService.accept(request);
+        return ResponseEntity.noContent().build();
     }
 
     @ExceptionHandler(AuthenticationException.class)
