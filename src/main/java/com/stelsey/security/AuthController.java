@@ -2,6 +2,7 @@ package com.stelsey.security;
 
 import com.stelsey.user.AcceptInviteRequest;
 import com.stelsey.user.InviteAcceptanceService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
+@Tag(name = "Auth")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

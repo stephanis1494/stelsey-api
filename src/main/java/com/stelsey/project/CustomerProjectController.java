@@ -3,12 +3,14 @@ package com.stelsey.project;
 import java.util.List;
 
 import com.stelsey.security.AuthenticatedUser;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Customer: Projects")
 @RestController
 @RequestMapping("/api/projects")
 public class CustomerProjectController {

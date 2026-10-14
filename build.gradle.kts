@@ -31,6 +31,7 @@ dependencies {
 	runtimeOnly("org.flywaydb:flyway-database-postgresql")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	testImplementation("org.springframework.boot:spring-boot-starter-security-test")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.1")
 }
 
 tasks.withType<Test> {
