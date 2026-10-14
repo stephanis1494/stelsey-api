@@ -73,7 +73,7 @@ public class AuthenticatedUser implements UserDetails, CredentialsContainer {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return enabled && passwordHash != null;
     }
 
     public String displayName() {

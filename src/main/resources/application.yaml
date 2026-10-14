@@ -18,6 +18,9 @@ logging:
   level:
     org.hibernate.SQL: debug
 app:
+  invites:
+    base-url: ${APP_BASE_URL:http://localhost:3000}
+    ttl: 7d
   admin:
     email: ${ADMIN_EMAIL:}
     password: ${ADMIN_PASSWORD:}

@@ -22,7 +22,7 @@ public class UserAccount {
     @Column(nullable = false, length = 320)
     private String email;
 
-    @Column(nullable = false)
+    @Column()
     private String passwordHash;
 
     @Column(nullable = false, length = 200)
@@ -60,8 +60,8 @@ public class UserAccount {
         return new UserAccount(null, email, passwordHash, displayName, Role.ADMIN);
     }
 
-    public static UserAccount newCustomerUser(Customer customer, String email, String passwordHash, String displayName) {
-        return new UserAccount(customer, email, passwordHash, displayName, Role.CUSTOMER);
+    public static UserAccount newInvitedCustomerUser(Customer customer, String email, String displayName) {
+        return new UserAccount(customer, email, null, displayName, Role.CUSTOMER);
     }
 
     public Long getId() {
@@ -97,5 +97,17 @@ public class UserAccount {
     }
     public Instant getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void changePasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public void changeEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean hasPassword() {
+        return passwordHash != null;
     }
 }
